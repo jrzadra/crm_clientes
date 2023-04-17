@@ -49,8 +49,26 @@ public class ClienteBuilderTest {
         assertEquals(clienteBuilder2.getNomeCompleto(), "Eduardo Moreira Vieira");
     }
 
+    @Test
+    public void testToStringIdentificacao() {
+        assertEquals(clienteBuilder.toStringIdentificacao(),
+         "Os dados pessoais são: Sra. Maria do Rocio Conceição, com CPF 123.456.789-00, data de nascimento 12/04/1978 com idade de 45 anos.");
+        clienteBuilder.setGenero('M');
+        assertEquals(clienteBuilder.toStringIdentificacao(),
+        "Os dados pessoais são: Sr. Maria do Rocio Conceição, com CPF 123.456.789-00, data de nascimento 12/04/1978 com idade de 45 anos.");
+        clienteBuilder.setGenero(' ');
+        assertEquals(clienteBuilder.toStringIdentificacao(),
+         "Os dados pessoais são:  Maria do Rocio Conceição, com CPF 123.456.789-00, data de nascimento 12/04/1978 com idade de 45 anos.");
+         clienteBuilder.setGenero('@');
+         assertEquals(clienteBuilder.toStringIdentificacao(),
+          "Os dados pessoais são:  Maria do Rocio Conceição, com CPF 123.456.789-00, data de nascimento 12/04/1978 com idade de 45 anos.");
+        
+
+    }
+
     @After
     public void tearDown() {
         clienteBuilder = null;
+        clienteBuilder2 = null;
     }
 }
