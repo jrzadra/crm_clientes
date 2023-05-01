@@ -78,7 +78,7 @@ public class ClienteBuilder {
     }
     
     private SimpleDateFormat definirFormatoData(String formatoData){
-        if(formatoData == "") {
+        if(Objects.equals(formatoData, "")) {
             return new SimpleDateFormat("dd/MM/YYYY");
         } else {
             return new SimpleDateFormat(formatoData);

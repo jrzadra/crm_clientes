@@ -8,19 +8,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class ClienteBuilderTest {
-   
-    private ClienteBuilder clienteBuilder; 
+
+    private ClienteBuilder clienteBuilder;
     private ClienteBuilder clienteBuilder2;
 
     @Before
     public void setUp() {
-       clienteBuilder = new ClienteBuilder().comIdentificacao("Maria",
-       "do Rocio", "Conceição", "123.456.789-00",
-       "12/04/1978", 'F');
-       clienteBuilder2 = new ClienteBuilder();
+        clienteBuilder = new ClienteBuilder().comIdentificacao("Maria",
+                "do Rocio", "Conceição", "123.456.789-00",
+                "12/04/1978", 'F');
+        clienteBuilder2 = new ClienteBuilder();
     }
-   
-    
+
+
     @Test
     public void testGetCpf() {
         assertEquals(clienteBuilder.getCpf(), "123.456.789-00");
@@ -44,26 +44,43 @@ public class ClienteBuilderTest {
     @Test
     public void testSetNomeCompleto() {
         clienteBuilder.setNomeCompleto("Carlos Nascimento Gomez");
-        assertEquals(clienteBuilder.getNomeCompleto(), "Carlos Nascimento Gomez");       
+        assertEquals(clienteBuilder.getNomeCompleto(), "Carlos Nascimento Gomez");
         clienteBuilder2.setNomeCompleto("Eduardo Moreira Vieira");
         assertEquals(clienteBuilder2.getNomeCompleto(), "Eduardo Moreira Vieira");
     }
 
-    @Test
+    @Test //Teste de gênero
     public void testToStringIdentificacao() {
         assertEquals(clienteBuilder.toStringIdentificacao(),
-         "Os dados pessoais são: Sra. Maria do Rocio Conceição, com CPF 123.456.789-00, data de nascimento 12/04/1978 com idade de 45 anos.");
+                "Os dados pessoais são: Sra. Maria do Rocio Conceição, com CPF 123.456.789-00," +
+                        " data de nascimento 12/04/1978 com idade de 45 anos.");
         clienteBuilder.setGenero('M');
         assertEquals(clienteBuilder.toStringIdentificacao(),
-        "Os dados pessoais são: Sr. Maria do Rocio Conceição, com CPF 123.456.789-00, data de nascimento 12/04/1978 com idade de 45 anos.");
+                "Os dados pessoais são: Sr. Maria do Rocio Conceição, com CPF 123.456.789-00," +
+                        " data de nascimento 12/04/1978 com idade de 45 anos.");
         clienteBuilder.setGenero(' ');
         assertEquals(clienteBuilder.toStringIdentificacao(),
-         "Os dados pessoais são:  Maria do Rocio Conceição, com CPF 123.456.789-00, data de nascimento 12/04/1978 com idade de 45 anos.");
-         clienteBuilder.setGenero('@');
-         assertEquals(clienteBuilder.toStringIdentificacao(),
-          "Os dados pessoais são:  Maria do Rocio Conceição, com CPF 123.456.789-00, data de nascimento 12/04/1978 com idade de 45 anos.");
-        
+                "Os dados pessoais são:  Maria do Rocio Conceição, com CPF 123.456.789-00," +
+                        " data de nascimento 12/04/1978 com idade de 45 anos.");
+        clienteBuilder.setGenero('@');
+        assertEquals(clienteBuilder.toStringIdentificacao(),
+                "Os dados pessoais são:  Maria do Rocio Conceição, com CPF 123.456.789-00," +
+                        " data de nascimento 12/04/1978 com idade de 45 anos.");
 
+    }
+
+    @Test
+    public void testGetDataDeNascimento() {
+        assertEquals(clienteBuilder.getDataDeNascimento(),"12/04/1978");
+        assertNull(clienteBuilder2.getDataDeNascimento());
+    }
+
+    @Test
+    public void testSetDataDeNascimento() {
+        clienteBuilder.setDataDeNascimento("22/11/1989");
+        assertEquals(clienteBuilder.getDataDeNascimento(), "22/11/1989");
+        clienteBuilder.setDataDeNascimento("02/06/2004");
+        assertEquals(clienteBuilder.getDataDeNascimento(), "02/06/2004");
     }
 
     @After
