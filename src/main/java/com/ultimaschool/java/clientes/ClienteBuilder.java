@@ -9,7 +9,7 @@ public class ClienteBuilder {
     private String primeiroNome;
     
     private String nomeDoMeio;
-    
+
     private String sobrenome;
     
     private String nomeCompleto;
@@ -29,7 +29,7 @@ public class ClienteBuilder {
     private String telefone;
     
         
-    public ClienteBuilder comIdentificacao(String primeiroNome, String nomeDoMeio, String sobrenome, String cpf, 
+    public ClienteBuilder comIdentificacao(String primeiroNome, String nomeDoMeio, String sobrenome, String cpf,
     String dataDeNascimento, char genero) {
         this.primeiroNome = primeiroNome;
         this.nomeDoMeio = nomeDoMeio;
@@ -78,7 +78,7 @@ public class ClienteBuilder {
     }
     
     private SimpleDateFormat definirFormatoData(String formatoData){
-        if(formatoData == "") {
+        if(Objects.equals(formatoData, "")) {
             return new SimpleDateFormat("dd/MM/YYYY");
         } else {
             return new SimpleDateFormat(formatoData);
