@@ -1,41 +1,69 @@
 package com.ultimaschool.java;
 
-import com.ultimaschool.java.clientes.Cliente;
-import com.ultimaschool.java.clientes.ClienteBuilder;
+import com.ultimaschool.java.clients.ClientBuilder;
+import com.ultimaschool.java.domain.Client;
+import com.ultimaschool.java.repository.ClientRepository;
+import com.ultimaschool.java.repository.DatabaseConnection;
+
+import java.sql.SQLException;
 
 public class Main {
-    public static void main( String[] args ) {
+    public static void main( String[] args ) throws SQLException {
 
-        Cliente clienteF = new Cliente("Maria", "do Rocio",
+        /* Client clientF = new Client("Maria", "do Rocio",
         "Conceição", "123.456.789-00", "12/04/1978",
         'F', "mariadorocio78@gmail.com",
         "Rua Manoel Gallardo, nº 134, Labra - São Paulo",
         "(11) 99999-0000");
-        System.out.println(clienteF.toString() + "\n");
+        System.out.println(clientF.toString() + "\n");
         
-        Cliente clienteM = new Cliente("Danilo", "",
+        Client clientM = new Client("Danilo", "",
         "Graciotto", "098.765.432-10", "22/07/1997",
         'M', "dangraciotto@outlook.com", 
         "Rua Augusta, nº 539, Centro - São Paulo",
         "(11) 11111-2222");
-        System.out.println(clienteM.toString() + "\n");
+        System.out.println(clientM.toString() + "\n");
 
-        ClienteBuilder clienteFCompleto = new ClienteBuilder().comIdentificacao("Maria",
+        ClientBuilder clientFCompleto = new ClientBuilder().withIdentification("Maria",
         "do Rocio", "Conceição", "123.456.789-00",
-        "12/04/1978", 'F').comContatos("mariadorocio78@gmail.com",
+        "12/04/1978", 'F').withContacts("mariadorocio78@gmail.com",
         "Rua Manoel Gallardo, nº 134, Labra - São Paulo",
         "(11) 99999-0000");
-        System.out.println(clienteFCompleto.toString() + "\n");
+        System.out.println(clientFCompleto.toString() + "\n");
 
-        ClienteBuilder clienteMContatos = new ClienteBuilder().comContatos(
+        ClientBuilder clientMContacts = new ClientBuilder().withContacts(
         "dangraciotto@outlook.com", 
         "Rua Augusta, nº 539, Centro - São Paulo",
         "(11) 11111-2222");
-        System.out.println(clienteMContatos.toStringContatos() + "\n");
+        System.out.println(clientMContacts.toStringContacts() + "\n");
 
-        ClienteBuilder clienteMIdentificacao = new ClienteBuilder().comIdentificacao(
+         ClientBuilder clientMIdentification = new ClientBuilder().withIdentification(
         "Danilo", "", "Graciotto", "098.765.432-10",
         "22/07/1997", 'M');
-        System.out.println(clienteMIdentificacao.toStringIdentificacao() + "\n");
+        System.out.println(clientMIdentification.toStringIdentification() + "\n");
+
+        DatabaseConnection connection = DatabaseConnection.getInstance();
+        DatabaseConnection connection1 = DatabaseConnection.getInstance();
+        DatabaseConnection connection2 = DatabaseConnection.getInstance();
+        DatabaseConnection connection3 = DatabaseConnection.getInstance();
+        DatabaseConnection connection4 = DatabaseConnection.getInstance();
+
+        System.out.println(connection);
+        System.out.println(connection1);
+        System.out.println(connection2);
+        System.out.println(connection3);
+        System.out.println(connection4); */
+
+        ClientRepository clientRepository = new ClientRepository();
+
+       // ClientRepository.findAll().forEach(System.out::println);
+
+        Client client = clientRepository.findById(1);
+            if (client != null) {
+                System.out.println(client);
+            } else {
+                System.out.println("Cliente não encontrado");
+            }
     }
+
 }
