@@ -2,8 +2,10 @@ package com.ultimaschool.java;
 
 import com.ultimaschool.java.clients.ClientBuilder;
 import com.ultimaschool.java.domain.Client;
+import com.ultimaschool.java.domain.Product;
 import com.ultimaschool.java.repository.ClientRepository;
 import com.ultimaschool.java.repository.DatabaseConnection;
+import com.ultimaschool.java.repository.ProductRepository;
 
 import java.sql.SQLException;
 
@@ -40,10 +42,10 @@ public class Main {
          ClientBuilder clientMIdentification = new ClientBuilder().withIdentification(
         "Danilo", "", "Graciotto", "098.765.432-10",
         "22/07/1997", 'M');
-        System.out.println(clientMIdentification.toStringIdentification() + "\n");
+        System.out.println(clientMIdentification.toStringIdentification() + "\n"); */
 
-        DatabaseConnection connection = DatabaseConnection.getInstance();
-        DatabaseConnection connection1 = DatabaseConnection.getInstance();
+       /*DatabaseConnection connection = DatabaseConnection.getInstance();
+         DatabaseConnection connection1 = DatabaseConnection.getInstance();
         DatabaseConnection connection2 = DatabaseConnection.getInstance();
         DatabaseConnection connection3 = DatabaseConnection.getInstance();
         DatabaseConnection connection4 = DatabaseConnection.getInstance();
@@ -54,16 +56,22 @@ public class Main {
         System.out.println(connection3);
         System.out.println(connection4); */
 
-        ClientRepository clientRepository = new ClientRepository();
+        /* ClientRepository clientRepository = new ClientRepository();
 
-       // ClientRepository.findAll().forEach(System.out::println);
+        ClientRepository.findAll().forEach(System.out::println);
 
         Client client = clientRepository.findById(1);
             if (client != null) {
                 System.out.println(client);
             } else {
                 System.out.println("Cliente não encontrado");
-            }
+            } */
+
+        ProductRepository productRepository = new ProductRepository();
+
+        productRepository.insert(new Product(154.90f,"Teclado Bluetooth Preto"));
+
+        productRepository.findAll().forEach(System.out::println);
     }
 
 }

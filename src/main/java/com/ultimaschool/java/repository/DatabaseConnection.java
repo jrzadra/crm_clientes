@@ -26,10 +26,9 @@ public class DatabaseConnection {
     private void createConnection() throws SQLException {
         this.connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/crm_aula",
-                "root","Rmzj190600asdf!@#");
+                "root","");
         this.connection.setAutoCommit(true);
     }
-
     public Connection getConnection() {
         return this.connection;
     }

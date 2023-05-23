@@ -21,7 +21,7 @@ public class ClientRepository {
 
         PreparedStatement preparedStatement = this.connection
                 .getConnection()
-                .prepareStatement("SELECT * FROM client");
+                .prepareStatement("SELECT * FROM cliente");
 
         ResultSet resultSet = preparedStatement.executeQuery();
 
