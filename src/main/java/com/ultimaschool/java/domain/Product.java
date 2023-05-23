@@ -17,6 +17,12 @@ public class Product {
         this.setNome(nome);
     }
 
+    public Product(int id, float preco, String nome) {
+        this.setId(id);
+        this.setPreco(preco);
+        this.setNome(nome);
+    }
+
     public int getId() {
         return id;
     }

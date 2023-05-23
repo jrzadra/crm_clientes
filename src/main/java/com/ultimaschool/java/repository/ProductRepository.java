@@ -51,9 +51,49 @@ public class ProductRepository {
         preparedStatement.setFloat(1, product.getPreco());
         preparedStatement.setString(2, product.getNome());
 
-    inserted = preparedStatement.execute();
+        inserted = preparedStatement.execute();
 
-        return false;
+        return inserted;
     }
 
+    public boolean update(Product product) throws SQLException {
+        boolean updated;
+
+        if (product == null || product.getId() < 0) {
+            return false;
+        }
+
+        String sql = "UPDATE produto " +
+                "SET preco = ?, " +
+                "nome =  ? " +
+                "WHERE id = ?";
+
+        PreparedStatement preparedStatement = this.connection
+                .getConnection()
+                .prepareStatement(sql);
+
+        preparedStatement.setFloat(1, product.getPreco());
+        preparedStatement.setString(2, product.getNome());
+        preparedStatement.setInt(3, product.getId());
+
+        updated = preparedStatement.execute();
+
+        return updated;
+    }
+
+    public boolean delete(int id) throws SQLException {
+        boolean isDeleted;
+
+        String sql = "DELETE FROM produto WHERE id = ?";
+
+        PreparedStatement preparedStatement = this.connection
+                .getConnection()
+                .prepareStatement(sql);
+
+        preparedStatement.setInt(1,id);
+
+        isDeleted = preparedStatement.execute();
+
+        return isDeleted;
+    }
 }

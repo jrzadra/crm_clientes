@@ -67,11 +67,24 @@ public class Main {
                 System.out.println("Cliente não encontrado");
             } */
 
-        ProductRepository productRepository = new ProductRepository();
+         ProductRepository productRepository = new ProductRepository();
 
-        productRepository.insert(new Product(154.90f,"Teclado Bluetooth Preto"));
+        // productRepository.insert(new Product(154.90f,"Teclado Bluetooth Preto"));
+
+        // productRepository.findAll().forEach(System.out::println);
+
+        // System.out.println("================================");
+
+        /* Product productToUpdate = new Product(51, 154.90f,"Teclado Bluetooth Preto Multilaser");
+
+        productRepository.update(productToUpdate);
+
+        productRepository.findAll().forEach(System.out::println); */
+
+        productRepository.delete(53);
 
         productRepository.findAll().forEach(System.out::println);
+
     }
 
 }
