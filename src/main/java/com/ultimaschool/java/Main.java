@@ -1,11 +1,10 @@
 package com.ultimaschool.java;
 
-import com.ultimaschool.java.clients.ClientBuilder;
-import com.ultimaschool.java.domain.Client;
-import com.ultimaschool.java.domain.Product;
-import com.ultimaschool.java.repository.ClientRepository;
-import com.ultimaschool.java.repository.DatabaseConnection;
-import com.ultimaschool.java.repository.ProductRepository;
+import com.ultimaschool.java.domain.entities.Client;
+import com.ultimaschool.java.domain.services.ClientServiceImpl;
+import com.ultimaschool.java.domain.services.IClientService;
+import com.ultimaschool.java.infra.repositories.ClientRepository;
+import com.ultimaschool.java.infra.repositories.ProductRepository;
 
 import java.sql.SQLException;
 
@@ -56,18 +55,18 @@ public class Main {
         System.out.println(connection3);
         System.out.println(connection4); */
 
-        /* ClientRepository clientRepository = new ClientRepository();
+       // ClientRepository clientRepository = new ClientRepository();
 
-        ClientRepository.findAll().forEach(System.out::println);
+        // ClientRepository.findAll().forEach(System.out::println);
 
-        Client client = clientRepository.findById(1);
+        /*Client client = clientRepository.findById(1);
             if (client != null) {
                 System.out.println(client);
             } else {
                 System.out.println("Cliente não encontrado");
             } */
 
-         ProductRepository productRepository = new ProductRepository();
+         // ProductRepository productRepository = new ProductRepository();
 
         // productRepository.insert(new Product(154.90f,"Teclado Bluetooth Preto"));
 
@@ -81,9 +80,19 @@ public class Main {
 
         productRepository.findAll().forEach(System.out::println); */
 
-        productRepository.delete(53);
+        // productRepository.delete(53);
 
-        productRepository.findAll().forEach(System.out::println);
+        // productRepository.findAll().forEach(System.out::println);
+
+        IClientService clientService = new ClientServiceImpl();
+
+        Client client = clientService.clientRegister(
+                "Fabricio Souza",
+                "145.888.795-77",
+                "fabricio@email.com",
+                30);
+
+        System.out.println(client);
 
     }
 

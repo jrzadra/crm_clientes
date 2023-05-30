@@ -1,4 +1,4 @@
-package com.ultimaschool.java.domain;
+package com.ultimaschool.java.domain.entities;
 
 public class Product {
 

@@ -1,8 +1,8 @@
-package com.ultimaschool.java.repository;
+package com.ultimaschool.java.infra.repositories;
 
-import com.ultimaschool.java.domain.Product;
+import com.ultimaschool.java.domain.entities.Product;
+import com.ultimaschool.java.infra.config.DatabaseConnection;
 
-import javax.xml.transform.Result;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

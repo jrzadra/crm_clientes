@@ -1,4 +1,4 @@
-package com.ultimaschool.java.domain;
+package com.ultimaschool.java.domain.entities;
 
 public class Client {
 
@@ -12,6 +12,18 @@ public class Client {
     private String email;
 
     private int age;
+
+    public Client() {
+
+    }
+
+    public Client(String firstName, String lastName, String cpf, String email, int age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.cpf = cpf;
+        this.email = email;
+        this.age = age;
+    }
 
     public int getId() {
         return id;

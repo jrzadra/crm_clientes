@@ -1,4 +1,4 @@
-package com.ultimaschool.java.repository;
+package com.ultimaschool.java.infra.config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -25,7 +25,7 @@ public class DatabaseConnection {
 
     private void createConnection() throws SQLException {
         this.connection = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/crm_aula",
+                "jdbc:mysql://localhost:3306/crm_db",
                 "root","");
         this.connection.setAutoCommit(true);
     }
